@@ -1,0 +1,95 @@
+//Original if it still exists:
+
+//https://openprocessing.org/sketch/2095060
+
+// Declares the variables required for the wind
+let a = 20;
+let b = 60;
+let c = 120;
+let d = 160;
+let e = 230;
+let f = 290;
+let g = 220;
+
+//Declares the variables required for the moving bird
+let x = 400;
+let y = 0;
+let z = 0;
+
+function setup() {
+	createCanvas(800, 600);
+
+	frameRate(10);
+}
+
+function draw() {
+	background(100);
+	
+	noStroke();
+	fill(200, 200, 200, 200);
+	rect(a, 250, 50, 10);
+	a = a + 5;
+	if (a > 800) {
+		a = 40;
+	}
+	rect(b, 350, 50, 10);
+	b = b + 5;
+	if (b > 800) {
+		b = 40;
+	}
+	rect(c, 300, 50, 10);
+	c = c + 5;
+	if (c > 800) {
+		c = 40;
+	}
+	rect(d, 250, 50, 10);
+	d = d + 5;
+	if (d > 800) {
+		d = 40;
+	}
+	rect(e, 350, 50, 10);
+	e = e + 5;
+	if (e > 800) {
+		e = 40;
+	}
+	rect(f, 300, 50, 10);
+	f = f + 5;
+	if (f > 800) {
+		f = 40;
+	}
+
+	// Moving bird
+	// The bird was taken from "Group Exercise" by Samantha
+	// https://openprocessing.org/sketch/2041470
+
+	stroke('yellow');
+	strokeWeight(5);
+	line(x, 280, x + 10, 280);
+	//Bird Body & Head 
+	noStroke();
+	fill("rgb(238,14,14)");
+	arc(x + 30, 285, 30, 35, TWO_PI, PI);
+	ellipse(x + 15, 280, 20, 20);
+	// Bird Eyes 
+	fill('black');
+	ellipse(x + 15, 280, 6, 6);
+	//Bird Wing
+	fill("rgb(192,7,7)");
+	strokeWeight(1);
+	if (x % 2 == 0) {
+		stroke("rgb(149,9,9)");
+		arc(x + 35, 285, 23, 20, TWO_PI, PI);
+	} else {
+		arc(x + 35, 285, 23, 20, PI, TWO_PI);
+	}
+
+
+	// Determines if the bird is moving forwards or backwards
+
+	if (mouseIsPressed) {
+		x -= 5;
+	} else {
+		x += 5;
+	}
+
+}
