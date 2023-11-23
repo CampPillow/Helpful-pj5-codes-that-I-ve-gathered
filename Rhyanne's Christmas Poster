@@ -1,0 +1,303 @@
+//Rhyanne Christmas Interactive / 2023
+//Here is the code if it still exists: https://openprocessing.org/sketch/2059829
+//This has cool shading, and a Santa attached to the mouse.
+
+//title: christmas ig
+//date: idk HELP im trying my hardest
+//i debated between SO many ideas for this bc i wanted to make this unique but since the requirement-
+//-is favourite holiday ig i have to stick with this T_T i was gonna do tanabata but i am in no place-
+//-to say that tanabata is my fave holiday if i havent experienced it myself yet lmao
+let gap = 7;
+let size = 50;
+
+function setup() {
+	createCanvas(700, 700);
+	colorMode(RGB, 255);
+	frameRate(10);
+}
+
+function draw() {
+	background(48, 73, 137);
+	//rough gradient
+	noStroke();
+	fill(61, 59, 112);
+	rect(0, 0, 700, 435);
+	fill(57, 52, 93);
+	rect(0, 0, 700, 300);
+	fill(46, 42, 75);
+	rect(0, 0, 700, 180);
+	fill(35, 32, 60);
+	rect(0, 0, 700, 80);
+
+	//for loop thing
+	noStroke();
+	fill(65, 82, 160);
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, -20, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 50, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 120, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 190, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 260, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 330, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 400, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 470, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 540, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 610, size);
+	}
+	for (let x = 15; x < width; x = x + gap + size) {
+		ellipse(x, 680, size);
+	}
+
+	//background snow for depth
+	fill(140, 136, 170);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 200), 20);
+	circle(random(0, 800), random(0, 500), 10);
+	circle(random(0, 800), random(0, 600), 5);
+	circle(random(0, 800), random(0, 700), 10);
+	circle(random(0, 800), random(0, 400), 10);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 500), 5);
+	circle(random(0, 800), random(0, 300), 15);
+	circle(random(0, 800), random(0, 350), 9);
+	circle(random(0, 800), random(0, 450), 12);
+	circle(random(0, 800), random(0, 500), 14);
+	circle(random(0, 800), random(0, 300), 12);
+	circle(random(0, 800), random(0, 450), 6);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 550), 12);
+	circle(random(0, 800), random(0, 200), 20);
+	circle(random(0, 800), random(0, 500), 10);
+	circle(random(0, 800), random(0, 600), 5);
+	circle(random(0, 800), random(0, 700), 10);
+	circle(random(0, 800), random(0, 400), 10);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 500), 5);
+	circle(random(0, 800), random(0, 300), 15);
+	circle(random(0, 800), random(0, 350), 9);
+	circle(random(0, 800), random(0, 450), 12);
+	circle(random(0, 800), random(0, 500), 14);
+	circle(random(0, 800), random(0, 300), 12);
+	circle(random(0, 800), random(0, 450), 6);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 550), 12);
+	
+	//cityscape in the back (oh dear god this is gonna be tiring)
+	fill(46, 48, 68);
+	beginShape();
+	vertex(0, 350)
+	vertex(100, 350)
+	vertex(100, 200)
+	vertex(220, 200)
+	vertex(220, 220)
+	vertex(250, 220)
+	vertex(250, 390)
+	vertex(260, 390)
+	vertex(260, 280)
+	vertex(290, 280)
+	vertex(290, 350)
+	vertex(350, 350)
+	vertex(350, 440)
+	vertex(400, 440)
+	vertex(400, 460)
+	vertex(420, 460)
+	vertex(420, 480)
+	vertex(430, 480)
+	vertex(430, 450)
+	vertex(470, 450)
+	vertex(500, 600)
+	vertex(0, 600)
+	endShape();
+
+	//moon
+	fill(206, 227, 246);
+	drawingContext.shadowBlur = 80
+	drawingContext.shadowColor = color(206, 227, 246)
+	circle(100, 100, 90);
+	circle(100, 100, 90);
+	drawingContext.shadowBlur = 0
+	drawingContext.shadowColor = color(0)
+	
+	//santa claus
+	//the guy
+	noStroke();
+	fill(79, 19, 28);
+	circle(mouseX, mouseY, 30);
+	fill(88, 75, 95);
+	circle(mouseX, mouseY - 15, 20);
+	fill(79, 19, 28);
+	triangle(mouseX - 10, mouseY -20, mouseX - 3, mouseY -35, mouseX + 10, mouseY -20);
+	//sled
+	fill(46, 24, 28);
+	beginShape();
+	vertex(mouseX - 22, mouseY + 2)
+	vertex(mouseX - 19, mouseY + 25)
+	vertex(mouseX + 22, mouseY + 2)
+	vertex(mouseX + 19, mouseY + 25)
+	endShape(CLOSE);
+	
+		//weird ahh light radiating from the moon LMAO
+	fill(221, 239, 246, 45);
+	beginShape();
+	vertex(100, 100)
+	vertex(220, 550)
+	vertex(500, 550)
+	vertex(600, 190)
+	endShape(CLOSE);
+
+	//random ahh house
+	strokeWeight(1);
+	stroke('black');
+	fill(60, 41, 66);
+	rect(450, height / 2, 620, 550);
+	fill(25, 18, 29);
+	triangle(450, height / 2, 600, 190, 730, height / 2);
+	//window
+	fill(150, 159, 221);
+	drawingContext.shadowBlur = 80
+	drawingContext.shadowColor = color(206, 227, 246)
+	rect(550, 400, 90, 70);
+	drawingContext.shadowBlur = 0
+	drawingContext.shadowColor = color(0)
+	strokeWeight(3);
+	line(550, 430, 640, 430);
+	line(590, 400, 590, 470);
+	//lighting??
+	stroke(215, 214, 255);
+	strokeWeight(5);
+	line(450, height / 2, 600, 190);
+	line(450, height / 2, 450, 440);
+
+	//random ahh present
+	drawingContext.shadowBlur = 30
+	drawingContext.shadowColor = color(206, 227, 246)
+	rect(250, 480, 70, 70);
+	drawingContext.shadowBlur = 0
+	drawingContext.shadowColor = color(0)
+	strokeWeight(1);
+	stroke(77, 92, 87);
+	fill(160, 223, 176);
+	rect(250, 480, 70, 70);
+	stroke(229, 106, 131);
+	strokeWeight(10);
+	line(250, 510, 320, 510);
+	line(285, 480, 285, 545);
+	line(285, 480, 275, 460);
+	line(285, 480, 295, 460);
+
+	//snow ground
+	noStroke();
+	fill('white');
+	rect(0, 550, 700, 700);
+	circle(0, 550, 150);
+	circle(100, 550, 100);
+	circle(150, 560, 60);
+	circle(450, 570, 100);
+	circle(490, 560, 70);
+	circle(200, 570, 70);
+	circle(400, 560, 80);
+	circle(350, 570, 70);
+	circle(530, 570, 60);
+	circle(650, 570, 60);
+	circle(700, 560, 70);
+	
+	//snow shading 1
+	fill(135, 130, 175);
+	rect(0, 570, 700, 700);
+	circle(0, 560, 150);
+	circle(100, 570, 100);
+	circle(150, 570, 60);
+	circle(450, 580, 100);
+	circle(490, 580, 70);
+	circle(200, 590, 70);
+	circle(400, 580, 80);
+	circle(350, 590, 70);
+	circle(530, 590, 60);
+	circle(650, 590, 60);
+	circle(700, 570, 70);
+	
+	//snow shading 2
+	fill(113, 108, 151);
+	rect(0, 610, 700, 700);
+	circle(0, 620, 150);
+	circle(100, 630, 100);
+	circle(150, 610, 60);
+	circle(450, 640, 100);
+	circle(490, 650, 70);
+	circle(200, 630, 70);
+	circle(400, 640, 80);
+	circle(350, 660, 70);
+	circle(530, 650, 60);
+	circle(650, 630, 60);
+	circle(700, 630, 70);
+
+	//SNOW ???
+	noStroke();
+	fill('white');
+	circle(random(0, 800), random(0, 200), 20);
+	circle(random(0, 800), random(0, 500), 10);
+	circle(random(0, 800), random(0, 600), 5);
+	circle(random(0, 800), random(0, 700), 10);
+	circle(random(0, 800), random(0, 400), 10);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 500), 5);
+	circle(random(0, 800), random(0, 550), 15);
+	circle(random(0, 800), random(0, 350), 9);
+	circle(random(0, 800), random(0, 450), 12);
+	circle(random(0, 800), random(0, 550), 14);
+	circle(random(0, 800), random(0, 300), 12);
+	circle(random(0, 800), random(0, 450), 6);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 550), 12);
+	circle(random(0, 800), random(0, 200), 20);
+	circle(random(0, 800), random(0, 500), 10);
+	circle(random(0, 800), random(0, 600), 5);
+	circle(random(0, 800), random(0, 700), 10);
+	circle(random(0, 800), random(0, 550), 10);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 500), 5);
+	circle(random(0, 800), random(0, 300), 15);
+	circle(random(0, 800), random(0, 350), 9);
+	circle(random(0, 800), random(0, 450), 12);
+	circle(random(0, 800), random(0, 550), 14);
+	circle(random(0, 800), random(0, 300), 12);
+	circle(random(0, 800), random(0, 450), 6);
+	circle(random(0, 800), random(0, 500), 15);
+	circle(random(0, 800), random(0, 550), 12);
+
+
+	//TEXT???!?!?!?!!
+	drawingContext.shadowBlur = 20
+	drawingContext.shadowColor = color(206, 227, 246)
+	fill(105, 197, 89);
+	stroke('white');
+	strokeWeight(5);
+	textSize(60);
+	textFont('monospace');
+	text('MERRY', 100, 300);
+	text('CHRISTMAS!', 50, 350);
+	fill(219, 54, 59);
+	text('MERRY', 100, 296);
+	text('CHRISTMAS!', 50, 346);
+	drawingContext.shadowBlur = 0
+	drawingContext.shadowColor = color(0)
+
+}
