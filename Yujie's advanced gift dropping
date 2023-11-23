@@ -1,0 +1,71 @@
+//Yujie's Advanced Gift dropping / 2023
+//If the original link still works:
+//https://openprocessing.org/sketch/2100094 
+
+let presents = []; // Array to store all present objects
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+  background(255);
+
+  // Loop through all the presents in the array
+  for (let present of presents) {
+    // Call the gift() function to draw the gift at its current coordinates
+    gift(present);
+
+    // If the present is still dropping, update the Y position
+    if (present.dropping) {
+      present.y += present.dropSpeed;
+      
+      // Check if the present has reached the bottom of the canvas
+      if (present.y >= height - 72) { // Consider the height of the present for stopping
+        present.dropping = false; // Stop the present from dropping any further
+        present.y = height - 72; // Set the Y position to be fixed at the bottom
+      }
+    }
+  }
+}
+
+function mousePressed() {
+  // Create a new present object with properties for position, color, and drop speed
+  let newPresent = {
+    x: mouseX, // X position where the mouse was clicked
+    y: mouseY, // Y position where the mouse was clicked
+    color: color(random(255), random(255), random(255)), // Random color
+    dropSpeed: 5, // Drop speed
+    dropping: true // Is the present dropping?
+  };
+
+  // Add the new present object to the presents array
+  presents.push(newPresent);
+}
+
+// Function to draw a gift
+function gift(present) {
+  // Set the stroke color to black
+  stroke("black");
+  // Set the stroke weight to a thin line
+  strokeWeight(1);
+  // Set the fill color to the present's color
+  fill(present.color);
+  // Draw the main rectangle of the gift using the present's X and Y coordinates
+  rect(present.x - 25, present.y, 50, 50);
+
+  // Set a thicker stroke weight for the ribbon
+  strokeWeight(5);
+  // Set the ribbon stroke color to a shade of red
+  stroke("rgb(219,48,48)");
+  // Draw the vertical and horizontal lines through the center of the gift for the ribbon
+  line(present.x, present.y, present.x, present.y + 50);
+  line(present.x - 25, present.y + 25, present.x + 25, present.y + 25);
+
+  // No stroke for bow
+  noStroke();
+  // Draw the bow using two triangles
+  fill("red");
+  triangle(present.x, present.y, present.x - 10, present.y - 10, present.x, present.y - 20);
+  triangle(present.x, present.y, present.x + 10, present.y - 10, present.x, present.y - 20);
+}
