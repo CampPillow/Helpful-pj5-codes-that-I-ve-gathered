@@ -1,0 +1,59 @@
+//Yujie's Gift Dropping / 2023
+//If the original link still works: https://openprocessing.org/sketch/2100089
+
+let gY = -50; // Variable to store the Y coordinate where the gift will start dropping from (initially off-screen)
+let gX; // Variable to store the X coordinate of the gift
+let dropping = false; // Boolean flag to keep track of whether the gift is currently dropping
+let dropSpeed = 5; // The speed at which the gift will drop (pixels per frame)
+
+function setup() {
+	createCanvas(800, 600);
+	gX = width / 2; // Set the default X position of the gift to the middle of the canvas
+}
+
+function draw() {
+	background(255);
+
+	// Check if the gift is currently in the dropping state
+	if (dropping) {
+		// Call the gift() function to draw the gift at its current coordinates
+		gift();
+
+		// Update the Y position of the gift by adding the drop speed so that it moves downwards each frame
+		gY += dropSpeed;
+
+		// Check if the gift has reached the bottom of the canvas
+		if (gY > height) {
+			// If yes, stop the dropping by setting the flag to false
+			dropping = false;
+
+			// Reset the Y position of the gift to start off-screen for the next drop
+			gY = -50;
+		}
+	}
+}
+
+function mousePressed() {
+	// When the mouse is pressed, start the dropping process:
+
+	// Set the dropping state to true to indicate the start of the drop
+	dropping = true;
+
+	// Set both gX and gY to the coordinates of the mouse click so that the gift starts at that location
+	gX = mouseX;
+	gY = mouseY;
+}
+
+// Define the gift function to draw the gift shape
+function gift() {
+	stroke("black");
+	strokeWeight(1);
+	fill("rgb(64,194,64)");
+	rect(gX - 24, gY + 22, 50, 50);
+	strokeWeight(7);
+	stroke("rgb(219,48,48)");
+	line(gX, gY + 23, gX, gY + 70);
+	line(gX - 21, gY + 47, gX + 23, gY + 47);
+	line(gX, gY + 23, gX - 15, gY + 10);
+	line(gX, gY + 23, gX + 15, gY + 10);
+}
