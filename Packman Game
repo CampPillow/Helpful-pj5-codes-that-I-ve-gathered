@@ -1,0 +1,262 @@
+//Original Sketch if it's still here: 
+
+//https://openprocessing.org/sketch/2093438
+
+//GHOST variables
+let x = -10;
+let x1 = 0;
+let x2 = -10
+let y = -10;
+let y1 = -100;
+let r = 5;
+
+//MOVING Pac-MAN variables
+let PacY = 427;
+let PacX = 350;
+
+
+//FONT Variable
+var font //FONT STYLE
+
+
+function setup() {
+	createCanvas(700, 700);
+}
+
+function draw() {
+	background(0);
+	// VERTICAL GHOSTS
+	y = y + 1.2;
+	if (y > 700) {
+		y = -10;
+	}
+
+	y1 = y1 + 1.2;
+	if (y1 > 700) {
+		y1 = -10;
+	}
+
+
+	//VERTICAL GHOSTS
+	noStroke();
+
+	//Ghost 1 (TEAL)
+	fill('rgb(18,191,204)');
+	arc(50, y, 40, 60, PI, radians(360));
+
+	//EYES
+
+	//EYE 1
+	//WHITE
+	fill(255);
+	circle(47, y - 15, 7.5);
+
+	//BLACK
+	fill(0);
+	circle(47.5, y - 15, 4);
+
+	//EYE 2
+	//WHITE
+	fill(255);
+	circle(60, y - 15, 7.5);
+
+	//BLACK
+	fill(0);
+	circle(60.5, y - 15, 4);
+
+
+
+
+	//Ghost 2 (RED)
+	fill('red');
+	arc(650, y1, 40, 60, PI, radians(360));
+
+	//EYES
+
+	//EYE 1
+	//WHITE
+	fill(255);
+	circle(647, y1 - 15, 7.5);
+
+	//BLACK
+	fill(0);
+	circle(647.5, y1 - 15, 4);
+
+	//EYE 2
+	//WHITE
+	fill(255);
+	circle(660, y1 - 15, 7.5);
+
+	//BLACK
+	fill(0);
+	circle(660.5, y1 - 15, 4);
+
+	//HORIZONTAL GHOSTS
+	x = x + 1.2;
+	if (x > 700) {
+		x = -10;
+	}
+
+	x1 = x1 + 1.2;
+	if (x1 > 700) {
+		x1 = 0;
+	}
+
+
+	//Ghost 3 (ORANGE)
+	fill('orange');
+	arc(x, 285, 40, 60, PI, radians(360));
+
+	//EYES
+
+	//EYE 1
+	//WHITE
+	fill(255);
+	circle(x - 3, 271, 7.5);
+
+	//BLACK
+	fill(0);
+	circle(x - 2.5, 271, 4);
+
+	//EYE 2
+	//WHITE
+	fill(255);
+	circle(x + 10, 271, 7.5);
+
+	//BLACK
+	fill(0);
+	circle(x + 10.5, 271, 4);
+
+	//Ghost 4 (PINK)
+	fill('rgb(249,156,173)')
+	arc(x1, 650, 40, 60, PI, radians(360));
+
+	//EYES 
+
+	//EYE 1
+	//WHITE
+	fill(255);
+	circle(x1 - 3, 636, 7.5);
+
+	//BLACK 
+	fill(0);
+	circle(x1 - 2.5, 636, 4);
+
+	//EYE 2
+	//WHITE
+	fill(255);
+	circle(x1 + 10, 636, 7.5);
+
+	//BLACK
+	fill(0);
+	circle(x1 + 10.5, 636, 4);
+
+
+	
+
+
+	//Moving PAC-MAN
+	noStroke();
+	fill('rgb(255,249,0)');
+	arc(PacX, PacY, 40, 40, QUARTER_PI, PI + HALF_PI + QUARTER_PI, PIE);
+
+
+	if (keyIsPressed) {
+		if (keyCode == LEFT_ARROW) {
+			PacX = PacX - 5;
+		} else if (keyCode === RIGHT_ARROW) {
+			PacX = PacX + 5;
+		}
+	}
+	if (keyIsPressed) {
+		if (keyCode === UP_ARROW) {
+			PacY = PacY - 5;
+		} else if (keyCode === DOWN_ARROW) {
+			PacY = PacY + 5;
+		}
+	}
+
+//BORDER
+	stroke('blue');
+	strokeWeight(40);
+	fill('blue');
+
+	//left border line (Y AXIS)
+	line(0, 0, 0, 800);
+
+	//right border line (Y AXIS)
+	line(700, 0, 700, 700);
+
+	//top Border line (X axis) 
+	line(0, 0, 700, 0);
+
+	//bottom border line (X axis)
+	line(0, 700, 700, 700);
+
+
+
+	//BLOCKADES
+	strokeWeight(20);
+	//VERTICAL LINE 1
+	line(100, 100, 100, 230);
+
+	//VERTICAL LINE 2
+	line(600, 470, 600, 600);
+
+	// HORIZONTAL LINE 1
+	line(100, 470, 300, 470);
+
+	//HORIZONTAL LINE 2
+	line(600, 230, 400, 230);
+
+	//HORIZONTAL LINE 3 (BOTTOM MIDDLE)
+	line(250, 550, 350, 550);
+
+	//HORIZONTAL LINE 3 (TOP MIDDLE)
+	line(350, 160, 450, 160);
+
+	//SMALL VERTICAL LINE 1 (BOTTOM LEFT)
+	line(150, 540, 150, 600);
+
+	//SMALL VERTCAL LINE 2 (TOP RIGHT)
+	line(550, 160, 550, 100);
+
+	//SMALL VERTICAL LINE 3 (MIDDLE BOTTOM LEFT)
+	line(250, 150, 250, 230);
+
+	//SMALL VERTICAL LINE 4 (MIDDLE BOTTOM RIGHT)
+	line(450, 550, 450, 470);
+
+
+	//SMALL VERTICAL LINE 5 (MIDDLE LEFT)
+	line(150, 310, 150, 390);
+
+	//SMALL VERTICAL LINE 5 (MIDDLE RIGHT)
+	line(550, 310, 550, 390);
+
+
+	//TEXT BORDER (MIDDLE)
+	noFill();
+	strokeWeight(10);
+	stroke('blue');
+	rectMode(CENTER);
+	rect(width / 2, height / 2, 230, 85);
+
+	strokeWeight(2.7);
+
+	//INSIDE TEXT
+	stroke('yellow');
+	fill('blue');
+	textSize(30);
+	text("PAC-MAN", 247, 367);
+	textFont(font);
+
+
+}
+
+//FONT STYLE
+function preload() {
+
+	font = loadFont('PressStart2P-Regular.ttf');
+
+}
