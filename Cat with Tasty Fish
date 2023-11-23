@@ -1,0 +1,160 @@
+//Original link if it still exists:
+
+//https://openprocessing.org/sketch/2095357
+
+let fontRegular;
+let a = 0
+let b = 0
+let c = 0
+let d = 0
+let e = 0
+let f = 0
+let g = 0
+let h = 0
+
+//Preloads the font.
+function preload() {
+	fontRegular = loadFont('Mabook.otf');
+}
+
+//Setup
+function setup() {
+	
+	createCanvas(600, 800);
+
+}
+//Let's draw!
+function draw() {
+	//Background (to prevent streaks of fish);
+	background(191,107,71);
+	
+	//Background detail
+	drawingContext.shadowBlur = 6000
+	drawingContext.shadowColor = color(232, 209, 123)
+	strokeWeight(0);
+	fill(232, 209, 123);
+	circle(300,800,900);
+	drawingContext.shadowBlur = 0
+	drawingContext.shadowColor = color(0)
+	
+	//Cat body Outline
+	fill(231,188,123);
+	stroke(0);
+	strokeWeight(18);
+	rect(50,300,500,900,28);
+	
+	//Cat ears (thanks to https://forum.processing.org/two/discussion/13493/how-can-i-create-a-triangle-with-round-vertexes.html for the help in getting these to look nice)
+	stroke(0,0,0);
+	strokeWeight(35);
+	strokeJoin(ROUND);
+	triangle(60,320,160,120,260,320);
+	triangle(340,320,440,120,540,320);
+	stroke(231,188,123);
+	strokeWeight(20);
+	strokeJoin(ROUND);
+	triangle(60,320,160,120,260,320);
+	triangle(340,320,440,120,540,320);
+	
+	//Cat Body
+	fill(231,188,123);
+	strokeWeight(0);
+	rect(50,300,500,900,28);
+	
+	//Cat ear insides
+	stroke(255,224,178);
+	fill(255,224,178);
+	triangle(90,290,160,150,230,290);
+	triangle(370,290,440,150,510,290);
+	
+	//Cat eyes (very cartoony);
+	strokeWeight(0);
+	fill(0,0,0);
+	ellipse(180,450,160,220);
+	ellipse(420,450,160,220);
+	fill(250,250,250);
+	ellipse(180,450,140,200);
+	ellipse(420,450,140,200);
+	
+	//Cat nose (very boopable);
+	strokeWeight(9);
+	stroke(0,0,0)
+	fill(232, 156, 123);
+	ellipse(300,580,80,40);
+	strokeWeight(6);
+	stroke(0,0,0,);
+	line(340,580,380,600);
+	line(340,580,380,580);
+	line(340,580,380,560);
+	line(260,580,220,600);
+	line(260,580,220,580);
+	line(260,580,220,560);
+	
+	//Cat mouth (very hungry);
+	stroke(0,0,0);
+	strokeWeight(9);
+	line(300,600,300,630);
+	noFill();
+	arc(250,630,100,90,0, PI);
+	arc(350,630,100,90,0, -PI);
+
+	//Cat eyes;
+	
+	a = 170 + mouseX*.05; 
+	b= 430 + mouseY*.065;
+	c= 410 + mouseX*.05;
+	d= 430 + mouseY*.065;
+	stroke(0,0,0);
+	strokeWeight(4);
+	fill(30, 65, 102);
+	ellipse(a,b,80,80);
+	ellipse(c,d,80,80);
+	
+	//Cat Eyelids and text
+	g = mouseX;
+	h = mouseY;
+	if ((h > 300) && (h < 600) && (g > 200) && (g < 400)) {
+		stroke(0,0,0);
+		strokeWeight(9);
+		fill(231,188,123);
+		arc (180,450,140,200,0, PI, CHORD);
+		arc (420,450,140,200,0, -PI, CHORD);
+		arc (180,450,140,200,PI,0,CHORD);
+		arc (420,450,140,200,-PI,0,CHORD);
+		fill(255,224,178);
+		textFont(fontRegular);
+		textSize(70);
+		text("<Fishy!>", 175, 80);
+		}
+	
+	//Cat Paws and text
+	if ((h > 600) && (h > 100) && (g < 520) && (g > 80)) {
+		stroke(0,0,0);
+		strokeWeight(9);
+		fill(231,188,123);
+		rect(120,700,120,200,60);
+		rect(360,700,120,200,60)
+		fill(255,224,178);
+		textFont(fontRegular);
+		textSize(70);
+		text("<Please give!>", 80, 80);
+		
+	}
+
+
+	
+	
+	//Fish movement, then fish (see tutorial comments for attribution);
+	e = e + (mouseX - e) * 0.09;
+  f = f + (mouseY - f) * 0.09;
+	drawingContext.shadowBlur = 30
+	drawingContext.shadowColor = color("yellow")
+	strokeWeight(5);
+	fill(86, 118, 151);
+	triangle(e,f,e-40,f-30,e-40,f+30);
+	ellipse(e+20,f,80,60);
+	drawingContext.shadowBlur = 0
+	drawingContext.shadowColor = color(0)
+	fill(0,0,0);
+	circle(e+40,f-5,10);
+	
+}
