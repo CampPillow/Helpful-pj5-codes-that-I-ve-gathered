@@ -1,0 +1,172 @@
+//Original if it still exists: https://openprocessing.org/sketch/2091286
+
+let x = -75
+let t = 300
+let p = 600
+let speed = 1;
+var darkColor = "rgb(98,23,70)"
+var midColor = "rgba(186,52,115,0.98)"
+var lightColor = "rgb(222,112,164)"
+var skyColor = "rgb(238,199,217)"
+var counter = 0
+
+function setup() {
+	createCanvas(800, 600);
+}
+
+function mouseClicked() {
+	changeColor();
+}
+
+function draw() {
+	background(skyColor);
+	noStroke();
+	fill("rgba(248,243,204,0.32)"); //Ivy's sun, taken from "Group Exercise"
+	ellipse(400, 280, random(300, 307));
+	fill("rgb(242,241,224)");
+	ellipse(400, 280, 300)
+
+	fill(lightColor); //row 3 buildings
+	rect(0, 400, 800, 100);
+	rect(25, 250, 100, 500);
+	rect(135, 230, 80, 500);
+	rect(225, 275, 125, 600);
+	rect(365, 245, 40, 500);
+	rect(415, 245, 40, 500);
+	rect(700, 245, 100, 500);
+	rect(500, 330, 300, 350);
+
+	rect(450, 300, 30, 50); //Jemma's bridge, taken from "Fav Festival"
+	rect(660, 300, 30, 50);
+	strokeWeight(2);
+	noFill();
+	stroke(lightColor);
+	arc(570, 345, 200, 200, PI, TWO_PI);
+	arc(570, 335, 210, 210, PI, TWO_PI);
+	strokeWeight(2);
+	line(475, 320, 665, 320);
+	line(490, 320, 490, 285);
+	line(500, 320, 500, 275);
+	line(510, 320, 510, 265);
+	line(520, 320, 520, 260);
+	line(530, 320, 530, 255);
+	line(540, 320, 540, 250);
+	line(550, 320, 550, 248);
+	line(560, 320, 560, 246);
+	line(570, 320, 570, 245);
+	line(580, 320, 580, 246);
+	line(590, 320, 590, 248);
+	line(600, 320, 600, 250);
+	line(610, 320, 610, 255);
+	line(620, 320, 620, 260);
+	line(630, 320, 630, 265);
+	line(640, 320, 640, 275);
+	line(650, 320, 650, 285);
+
+	fill(midColor) //row 2 buildings
+	noStroke()
+	rect(0, 500, 800, 100);
+	rect(0, 300, 80, 300);
+	rect(90, 325, 100, 350);
+	rect(210, 300, 90, 300);
+	rect(310, 350, 125, 300);
+	rect(450, 300, 100, 300);
+	rect(560, 340, 150, 340);
+	rect(725, 300, 100, 300);
+
+	fill(darkColor); //row 1 buildings
+	noStroke()
+	rect(0, 555, 800, 50);
+	rect(20, 400, 75, 250);
+	rect(100, 425, 65, 200);
+	rect(175, 475, 150, 125);
+	rect(170, 475, 160, 20);
+	rect(350, 425, 75, 200);
+	rect(435, 400, 75, 200);
+	rect(525, 425, 125, 200);
+	rect(520, 425, 135, 20);
+	rect(675, 400, 100, 200);
+
+	fill("rgba(247,251,244,0.05)") //windows
+	rect(35, 425, 10, 100);
+	rect(115, 455, 10, 60);
+	rect(200, 510, 25, 25);
+	rect(235, 510, 25, 25);
+	rect(270, 510, 25, 25);
+	rect(390, 455, 10, 60);
+	rect(475, 425, 10, 100);
+	rect(550, 455, 20, 25)
+	rect(550, 500, 20, 25)
+	rect(590, 455, 20, 25)
+	rect(590, 500, 20, 25)
+	rect(725, 435, 30, 100);
+	rect(45, 325, 10, 60);
+	rect(115, 350, 10, 60);
+	rect(145, 350, 10, 60);
+	rect(225, 350, 20, 110);
+	rect(255, 350, 20, 110);
+	rect(335, 375, 20, 40);
+	rect(365, 375, 20, 40);
+	rect(395, 375, 20, 40);
+	rect(475, 325, 50, 20);
+	rect(475, 360, 50, 20);
+	rect(575, 360, 30, 40);
+	rect(620, 360, 30, 40);
+	rect(665, 360, 30, 40);
+	rect(745, 340, 30, 60);
+
+	fill("rgba(251,249,236,0.96)"); //clouds inspired by Riley's speed lines in "Festival Sketch Final"
+	x = x + speed;
+	ellipse(x, 100, 125, 50);
+	ellipse(x + 20, 100, 100, 70);
+	ellipse(x + 40, 100, 125, 50);
+	if (x > 815) {
+		x = -75;
+	}
+
+	t = t + speed;
+	ellipse(t, 150, 100, 50);
+	ellipse(t + 20, 150, 90, 70);
+	ellipse(t + 40, 150, 100, 50);
+	if (t > 815) {
+		t = -75;
+	}
+
+	p = p + speed;
+	ellipse(p, 150, 100, 50);
+	ellipse(p + 20, 150, 90, 70);
+	ellipse(p + 40, 150, 100, 50);
+	if (p > 815) {
+		p = -75;
+	}
+}
+
+function changeColor() { //makes colors change when clicked
+	if (counter == 1) {
+		//orange
+		lightColor = "rgb(186,165,73)"
+		midColor = "rgba(178,96,22,0.98)"
+		darkColor = "rgb(82,36,23)"
+		skyColor = "rgb(248,206,172)"
+	}
+	//blue
+	if (counter == 2) {
+		lightColor = "rgb(89,83,214)"
+		midColor = "rgba(17,27,125,0.98)"
+		darkColor = "rgb(20,20,68)"
+		skyColor = "rgb(183,180,243)"
+
+	}
+	//pink
+	if (counter == 3) {
+		lightColor = "rgb(222,112,164)"
+		midColor = "rgba(186,52,115,0.98)"
+		darkColor = "rgb(98,23,70)"
+		skyColor = "rgb(238,199,217)"
+
+	}
+	counter++
+	if (counter == 4) {
+		counter = 0
+	}
+}
